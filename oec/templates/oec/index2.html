@@ -218,36 +218,114 @@
           </div>
         </nav>
       </div>
-      <div id="layoutSidenav_content">
+        <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard</h1>
+            <h1 class="mt-4">Update School</h1>
+             {#     area for all the tables         #}
             <!-- <ol class="breadcrumb mb-4">
               <li class="breadcrumb-item active">Dashboard</li>
             </ol> -->
+
+               {% block content %}
+<br>
+<div class="row">
+<div class="col-md-2">
+</div>
+    <div class="col-md-8">
+        <div class="card card-body">
+            <p>Delete the record</p>
+                <form action="{% url 'deleteschool' id.id %}" method="POST">
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="{% url 'morning' %}">Cancel</a>
+                    <input class="btn btn-danger" type="submit" name="Confirm">
+                </form>
+        </div>
+    </div>
+<div class="col-md-2">
+</div>
+</div>
+{% endblock %}
           </div>
         </main>
+        </div>
 
-        <!-- #########################################
-    ##################FOOTER#####################
-################################################# -->
 
-        <footer class="py-4 bg-light mt-auto">
-          <div class="container-fluid px-4">
-            <div
-              class="d-flex align-items-center justify-content-between small"
-            >
-              <div class="text-muted">Copyright &copy; Ocean 2022</div>
-              <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
+{#      <div id="layoutSidenav_content">#}
+{#        <main>#}
+{#          <div class="container-fluid px-4">#}
+{#              <div class="d-flex p-2 bd-highlight"><h1>Morning Dashboard</h1></div>#}
+{#          </div>#}
+{##}
+{#        </main>#}
+{##}
+{#        <div class="d-flex justify-content-center p-5">#}
+{#            <button type="button" class="btn btn-secondary">#}
+{#                              <a style="color: white; text-decoration: none;" href="{%  url 'addaschool' %}">Add a School</a>#}
+{#            </button>#}
+{#        </div>#}
+{##}
+{#          <div class="col-md">#}
+{#            <div>#}
+{#                <div class="d-flex justify-content-between mb-3">#}
+{#                <div class=" "><b>School Name</b></div>#}
+{#                <div class=" "><b>Phone Number</b></div>#}
+{#                <div class=" "><b>Head Teacher</b></div>#}
+{#                <div class=" "></div>#}
+{#                <div class="p-2 "></div>#}
+{#            </div>#}
+{#                <table class="table table-sm">#}
+{#                    <table class="table table-sm">#}
+{##}
+{#                    {% for info in school %}#}
+{#                <tr>#}
+{#                    <td>{{info.schoolname}}</td>#}
+{#                    <td>{{info.schoolphone}}</td>#}
+{#                    <td>{{info.personincharge}}</td>#}
+{##}
+{#					<td><a class="nav-link btn btn-sm btn-info" href="{% url 'addaschoolupdate' info.id %}">Edit</a></td>#}
+{#					<td><a class="nav-link btn btn-sm btn-danger" href="{% url 'deleteschool' info.id %}">Delete</a></td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{##}
+{#                        {% for info in school %}#}
+{##}
+{#                            <tr class="highlight">#}
+{#                                <td><input type="text" class="form-control" id="schoolname" name="schoolname" value="{{ info.schoolname }}"></td>#}
+{#                                <td><a href="{% url 'addaschoolupdate' %}"/>{{ info.schoolname }}</td>#}
+{#                                <td><a href="{% url 'addaschoolupdate' %}"/>{{ info.schoolphone }}</td>#}
+{#                                <td><a href="{% url 'addaschoolupdate' %}"/>{{ info.schoolfax }}</td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{##}
+{#                    </table>#}
+{##}
+{#                </table>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <!-- ##########################################}
+{#    ##################FOOTER######################}
+{################################################## -->#}
+{##}
+{#        <footer class="py-4 bg-light mt-auto">#}
+{#          <div class="container-fluid px-4">#}
+{#            <div#}
+{#              class="d-flex align-items-center justify-content-between small"#}
+{#            >#}
+{#              <div class="text-muted">Copyright &copy; Ocean 2022</div>#}
+{#              <div>#}
+{#                <a href="#">Privacy Policy</a>#}
+{#                &middot;#}
+{#                <a href="#">Terms &amp; Conditions</a>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </footer>#}
+{#      </div>#}
+
     </div>
+
     <script src="{% static 'js2/scripts.js' %}"></script>
 {#    Open the accordian menu bar #}
     <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>

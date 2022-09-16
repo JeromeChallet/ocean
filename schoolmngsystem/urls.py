@@ -28,6 +28,7 @@ from management import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('index2', oec.views.index2, name='index2'),
 
     path('oec', oec.views.oec, name='oec'),
 
@@ -40,7 +41,7 @@ urlpatterns = [
     path('deleteschool<str:pk>', oec.views.deleteschool, name='deleteschool'),
 
 
-    path('afternoon', oec.views.afternoon, name='afternoon'),
+    # path('afternoon', oec.views.afternoon, name='afternoon'),
 
     path('etechlab', etechlab.views.etechlab, name='etechlab'),
     path('aet', aet.views.aet, name='aet'),

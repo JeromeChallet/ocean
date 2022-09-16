@@ -6,21 +6,25 @@ from management.models import School2
 from management.models import Addaschool
 
 from .forms import AddaschoolForm
+from django.core.paginator import Paginator
 
 def oec(request):
     return render(request,'oec/oec.html')
 
 def morning(request):
     school = Addaschool.objects.all().order_by('-id').values()
+    schoollist_paginator = Paginator(school, 5)
+    page_num = request.GET.get('page')
+    page = schoollist_paginator.get_page(page_num)
     # school = Addaschool.objects.all()
     # .objects.all().order_by('-id').values()
     # print("agagaggagagaggaga")
     # for x in school:
     #     print(x.schoolname)
-    return render(request,'oec/morning.html', {'school': school})
+    return render(request,'oec/morning.html', {'school': school, 'page': page, 'count': schoollist_paginator.count})
 
-def afternoon(request):
-    return render(request,'oec/index2.html')
+# def afternoon(request):
+#     return render(request,'oec/index2.html')
 
 def addaschool(request):
     if request.method == 'POST':
@@ -106,8 +110,12 @@ def editschool(request, pk):
         print(editedcolumn.trainstation)
         editedcolumn.save()
         # school = Addaschool.objects.all()
+        # school = Addaschool.objects.all().order_by('-id').values()
         school = Addaschool.objects.all().order_by('-id').values()
-    return render(request, 'oec/morning.html', {'school': school})
+        schoollist_paginator = Paginator(school, 5)
+        page_num = request.GET.get('page')
+        page = schoollist_paginator.get_page(page_num)
+    return render(request, 'oec/morning.html', {'school': school, 'page': page, 'count': schoollist_paginator.count})
 
 
 # if request.method == "POST":
@@ -132,4 +140,9 @@ def deleteschool(request, pk):
     context = {'id': school}
 
     return render(request, 'oec/delete-school-confirm.html', context)
+
+# send to index2 instead of morning
+def index2(request):
+    school = Addaschool.objects.all().order_by('-id').values()
+    return render(request,'oec/index2.html', {'school': school})
 
